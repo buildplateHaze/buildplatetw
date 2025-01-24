@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BUILDPLATETW_VERSION' ) ) {
 	/*
-	 * Set the theme’s version number.
+	 * Set the theme's version number.
 	 *
 	 * This is used primarily for cache busting. If you use `npm run bundle`
 	 * to create your production build, the value below will be replaced in the
@@ -30,10 +30,10 @@ if ( ! defined( 'BUILDPLATETW_TYPOGRAPHY_CLASSES' ) ) {
 	 * For the block editor, these classes are converted to a JavaScript array
 	 * and then used by the `./javascript/block-editor.js` file, which adds
 	 * them to the appropriate elements in the block editor (and adds them
-	 * again when they’re removed.)
+	 * again when they're removed.)
 	 *
 	 * For the classic editor (and anything using TinyMCE, like Advanced Custom
-	 * Fields), these classes are added to TinyMCE’s body class when it
+	 * Fields), these classes are added to TinyMCE's body class when it
 	 * initializes.
 	 */
 	define(
@@ -117,6 +117,14 @@ if ( ! function_exists( 'buildplatetw_setup' ) ) :
 
 		// Remove support for block templates.
 		remove_theme_support( 'block-templates' );
+
+		// Add theme support for custom logo
+		add_theme_support('custom-logo', array(
+			'height'      => 32,
+			'width'       => 128,
+			'flex-height' => true,
+			'flex-width'  => true,
+		));
 	}
 endif;
 add_action( 'after_setup_theme', 'buildplatetw_setup' );
