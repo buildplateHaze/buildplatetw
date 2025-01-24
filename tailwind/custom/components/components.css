@@ -1,0 +1,249 @@
+/**
+ * Custom styles to immediately follow Tailwind's `components` layer
+ *
+ * "Add more opinionated, complex classes like buttons, form controls, alerts,
+ * etc; the sort of pre-built components you often see in other frameworks that
+ * you might need to override with utility classes."
+ *
+ * — from https://tailwindcss.com/docs/plugins#adding-components
+ */
+
+/**
+ * Post title styles
+ *
+ * These will be applied to all headings with a `page-title` or `entry-title`
+ * class on the frontend and to the post title in the block editor.
+ *
+ * The supplied styles are meant to match the default `h1` classes from
+ * Tailwind Typography.
+ */
+.page-title,
+.entry-title {
+	@apply max-w-content mx-auto mb-6 text-3xl font-extrabold text-neutral-900;
+}
+
+/**
+ * Layout styles for centered content areas
+ *
+ * If you are controlling the width of your content area with styles applied
+ * to its container, you can delete the following styles whose selectors begin
+ * with `.page-content >` and `.entry-content >`. For more details, please see
+ * the following:
+ *
+ * https://make.wordpress.org/core/2021/06/29/on-layout-and-content-width-in-wordpress-5-8/
+ */
+.page-content > *,
+.entry-content > * {
+	/* Content width from the `theme.json` file */
+	@apply max-w-content mx-auto;
+}
+
+.entry-content > .alignwide {
+	/* Wide width from the `theme.json` file */
+	@apply max-w-wide;
+}
+
+.entry-content > .alignfull {
+	@apply max-w-none;
+}
+
+.entry-content > .alignleft {
+	@apply float-left mr-8;
+}
+
+.entry-content > .alignright {
+	@apply float-right ml-8;
+}
+
+#primary-menu {
+	@apply flex flex-col md:flex-row items-start p-4 max-w-[1400px] mx-auto !important;
+}
+
+#primary-menu li {
+	@apply w-full md:w-auto;
+}
+
+#primary-menu li:nth-last-child(-n+2) {
+	@apply ml-0;
+}
+
+#primary-menu a {
+	@apply block px-4 py-2 text-gray-700 hover:text-gray-900;
+}
+
+.search-container {
+	@apply flex-1 mx-2 md:mx-4 lg:mx-8;
+}
+
+.search-form {
+	@apply flex items-center w-full relative;
+}
+
+.search-field {
+	@apply w-full h-[40px] md:h-[48px] rounded-[40px] border-2 border-[#222222] 
+	px-2 md:px-4 py-2 pl-8 md:pl-12 pr-10 md:pr-14 
+	focus:outline-none focus:border-[#222222] focus:shadow-none
+	text-[14px] md:text-[16px] text-neutral-800 placeholder-neutral-500;
+}
+
+/* Left search icon */
+.search-form::before {
+	@apply absolute left-2 md:left-4 text-gray-400;
+	content: '';
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'%3E%3C/path%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 16px;
+	height: 16px;
+	@apply md:w-[20px] md:h-[20px];
+}
+
+/* Search submit button */
+.search-submit {
+	@apply absolute right-1 md:right-2 bg-[#F1641E] text-white 
+	rounded-full w-[32px] h-[32px] md:w-[40px] md:h-[40px] 
+	flex items-center justify-center cursor-pointer hover:bg-[#E74C19] border-0;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'%3E%3C/path%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20px;
+	@apply md:bg-[length:24px_24px];
+}
+
+.search-submit span {
+	@apply sr-only;
+}
+
+#masthead {
+	@apply relative;
+}
+
+.menu-toggle {
+	@apply p-2 text-gray-700 hover:text-gray-900;
+}
+
+#site-navigation {
+	@apply shadow-lg;
+}
+
+.logo {
+	@apply flex items-center;
+}
+
+.logo a {
+	@apply text-[#F1641E] hover:text-[#E74C19] transition-colors duration-200 text-2xl font-bold;
+}
+
+/* Remove these classes as we're not using images anymore */
+.logo img,
+.custom-logo-link,
+.custom-logo {
+	display: none;
+}
+
+#categories-menu {
+	@apply text-xs md:text-sm;
+}
+
+#categories-menu ul {
+	@apply p-4;
+}
+
+#categories-menu li {
+	@apply mb-2;
+}
+
+#categories-menu li a {
+	@apply text-gray-600 hover:text-gray-900 whitespace-nowrap py-1 md:py-2 transition-colors duration-150;
+}
+
+#categories-menu li.current-menu-item a {
+	@apply text-[#F1641E] font-medium;
+}
+
+/* Hide scrollbar but keep functionality */
+#categories-menu::-webkit-scrollbar {
+	display: none;
+}
+
+#categories-menu {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+#categories-toggle {
+	@apply relative transition-colors duration-150;
+}
+
+#categories-toggle[aria-expanded="true"] {
+	@apply bg-gray-100;
+}
+
+/* Add a subtle arrow indicator */
+#categories-toggle[aria-expanded="true"]::after {
+	content: '';
+	@apply absolute -bottom-1 left-1/2 transform -translate-x-1/2 translate-y-full 
+	border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white
+	z-[51];
+}
+
+/* Footer Styles */
+#colophon {
+    @apply mt-auto; /* This ensures footer sticks to bottom if content is short */
+}
+
+#colophon a {
+    @apply transition-colors duration-200;
+}
+
+/* Add this to your body or main wrapper to ensure footer stays at bottom */
+.site {
+    @apply min-h-screen flex flex-col;
+}
+
+/* Mobile menu styles */
+@media (max-width: 768px) {
+    .categories-nav {
+        @apply -mx-4;
+    }
+    
+    #categories-menu {
+        @apply px-4;
+    }
+}
+
+/* Mobile menu styles */
+#mobile-categories-menu {
+    @apply divide-y divide-gray-200;
+}
+
+#mobile-categories-menu li a {
+    @apply block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150;
+}
+
+#mobile-categories-menu li.current-menu-item a {
+    @apply text-[#F1641E] font-medium;
+}
+
+/* Animation classes for mobile menu */
+.mobile-menu-enter {
+    @apply transition-all duration-200 ease-out;
+    max-height: 0;
+    opacity: 0;
+}
+
+.mobile-menu-enter-active {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.mobile-menu-exit {
+    @apply transition-all duration-200 ease-in;
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.mobile-menu-exit-active {
+    max-height: 0;
+    opacity: 0;
+}
